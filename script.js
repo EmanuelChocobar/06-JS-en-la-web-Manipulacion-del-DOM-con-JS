@@ -18,7 +18,7 @@ const createTask = (evento) =>{
         <i class="fas fa-trash-alt trashIcon icon"></i>
     `
     task.innerHTML = content; //inyecta dinamicamente un html
-    list.appendChild(task);
+    list.appendChild(task);//coloca un nodo hijo dentro del nodo padre
     console.log(content);
 };
 
