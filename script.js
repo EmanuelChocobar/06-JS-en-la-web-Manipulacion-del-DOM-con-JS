@@ -1,8 +1,11 @@
 //immediately invoked function expression IIFE
-( () => {
-const btn =  document.querySelector("[data-form-btn]"); //data attributes
 
-const createTask = (evento) =>{
+import checkComplete from "./components/checkComplete.js";
+import deleteIcon from "./components/deleteIcon.js";
+
+const btn = document.querySelector("[data-form-btn]"); //data attributes
+
+const createTask = (evento) => {
     evento.preventDefault();
     const input = document.querySelector('[data-form-input]');
     const value = input.value;
@@ -16,29 +19,12 @@ const createTask = (evento) =>{
     const titleTask = document.createElement("span");
     titleTask.classList.add('task');
     titleTask.innerText = value;
-    taskContent.appendChild(titleTask)
-    const content = `
-        <i class="fas fa-trash-alt trashIcon icon"></i>
-    `;
+    taskContent.appendChild(titleTask);
     //task.innerHTML = content; //inyecta dinámicamente un html
     task.appendChild(taskContent)
+    task.appendChild(deleteIcon());
     list.appendChild(task);//coloca un nodo hijo dentro del nodo padre
 };
 
 //listener
-btn.addEventListener("click", createTask);
-
-const checkComplete = () =>{
-    const i = document.createElement('i');
-    i.classList.add('far', 'fa-check-square', 'icon');
-    i.addEventListener('click', completeTask);
-    return i;
-};
-const completeTask = (event) => {
-    const element = event.target;//es la propiedad del objeto que indica cual es el nodo exacto 
-    element.classList.toggle('fas');
-    element.classList.toggle('completeIcon');
-    element.classList.toggle('far');
-};
-
-})();//la llamamos 
+btn.addEventListener('click', createTask);
